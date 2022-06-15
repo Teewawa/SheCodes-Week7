@@ -134,7 +134,8 @@ function getTodaysDate(now) {
 }
 
 //Time format: 12-hour period AM/PM
-function getTimeNow(now) {
+function getTimeNow() {
+  let now = new Date();
   let hour = now.getHours();
   let minutes = String(now.getMinutes()).padStart(2, "0");
   let meridiem = "";
@@ -150,7 +151,13 @@ function getTimeNow(now) {
     hour = hour - 12;
     meridiem = "PM";
   }
-  return `${hour}:${minutes}${meridiem}`;
+  let time = `${hour}:${minutes}${meridiem}`;
+  timeNow.innerHTML = time;
+  let t = setTimeout(function () {
+    getTimeNow();
+  }, 1000);
+
+  //return ``;
 }
 
 //Greeting format: Morning 12AM-11AM, Afternoon 12PM-5PM, Evening 6PM-11PM
@@ -175,8 +182,8 @@ let timeNow = document.querySelector("#time-now");
 let greeting = document.querySelector("#greeting");
 
 dateToday.innerHTML = getTodaysDate(now);
-timeNow.innerHTML = getTimeNow(now);
 greeting.innerHTML = getGreeting(now);
+getTimeNow();
 
 /*Fahrenheit/Celsisu function
 (17) in Celsius and add link to covert it to Fahrenheit. When clicking 

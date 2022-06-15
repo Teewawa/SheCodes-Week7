@@ -61,7 +61,9 @@ body {
   font-size: 36px;
 }
 .units {
-  font-size: 20px;
+  position: relative;
+  font-size: 15px;
+  top: -14px;
 }
 #fahrenheit-link {
   text-decoration: none;
