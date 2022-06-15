@@ -11,14 +11,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/styles.css" />
-     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Wk5 Homework: Search Engine </title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Wk7 Homework: Vanilla Weather App </title>
   </head>
   <body>
     <div class="container p-2">
       <div class="weatherApp">
         <!--1 Row with 2 Col - set as 2 cards-->
-        <div class="row p-4 main">
+        <div class="row p-2 main">
           <!--Column 1, Card 1-->
           <div class="col-sm-3 p-0">
             <!--Card 1, h-100: same card heights-->
@@ -34,14 +34,19 @@
                     class="rounded"
                   />
                 </form>
-                </div>
-              <h1 class="location" id="location">Hagatna, Guam</h1>
-              <div class="weatherIcon-main">⛅</div>
-              <div class="weatherStatus">Partly Cloudy</div>
-              <span class="temp" id="temperature">17
-                <small class="units"><a href="#" id="celsius-link">°C</a>  | 
-                <a href="#" id="fahrenheit-link">°F</a>  
-              </small> </span>
+              </div>
+              <h1 class="location" id="location">Hagatna, GU</h1>           
+            <div class="weatherForecast">
+                  <span class="temp" id="temperature">17</span><small class="units"><a href="#" id="celsius-link">°C</a>  | 
+                        <a href="#" id="fahrenheit-link">°F</a>
+                    </small>
+   
+                <br>
+                <div class = "weatherStatus">Partly Cloudy</div>
+                <img src="./media/sun.png" class="weatherIcon-main" alt="weather Icon">
+                
+            </div>
+              <br>
               <div class="row p-0">
                 <div class="col p-1 just-right" id="feelsLike">Feels like 17</div>
               </div>
@@ -63,12 +68,17 @@
               <!--Card 2: Row 1 has 2 Columns-->
               <div class="row p-0 m-1">
                 <div class="col-sm-9 p-0">
-                  <h2 class="greeting" id="greeting"></h2>
-                  <p class="dateToday m-1 p-0" id="date-today"></p>
+                  <h2 class="greeting" id="greeting"></h2> 
+                 
+                  <div class="dateToday m-1 p-0" id="date-today"></div>
+                
+                  
                 </div>
                 <div class="col-sm-3 p-0">
-                  <br />
-                  <h3 id="time-now"></h3>
+                  <br>
+                  <h5 id="time-now"></h5>
+                  
+                  
                 </div>
               </div>
               <!--Card 2, 1 Card with Table-->

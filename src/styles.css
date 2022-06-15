@@ -9,6 +9,7 @@ body {
 .weatherApp {
   margin: 0 auto;
   max-width: 900px;
+  margin-top: 45px;
 }
 .card {
   text-align: center;
@@ -16,16 +17,16 @@ body {
 #search {
   background-color: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(192, 192, 192, 0.4);
-  width: 95%;
+  width: 50%;
 }
 .greeting {
   text-align: left;
 }
-.dateToday {
+#date-today {
   text-align: left;
 }
-#time-now {
-  text-align: left;
+h3 #time-now {
+  text-align: right;
 }
 .card.bg-card-left {
   background-color: rgba(216, 178, 190, 0.4);
@@ -45,25 +46,31 @@ body {
 }
 
 .location {
-  font-size: 32px;
+  font-size: 25px;
   margin: 20px auto 1px;
 }
-.weatherIcon-main {
-  font-size: 75px;
-  margin: 1px;
-  padding: 2px;
-}
-.weatherStatus {
-  font-size: 20px;
-}
 .temp {
-  padding: 3px 0 0 0;
-  font-size: 36px;
+  padding: 2px 0px 0px 0px;
+  font-size: 60px;
+  position: relative;
+  right: -20px;
 }
 .units {
   position: relative;
-  font-size: 15px;
-  top: -14px;
+  padding: 0px;
+  margin: 0px;
+  right: -22px;
+}
+.weatherStatus {
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px;
+}
+.weatherIcon-main {
+  max-width: 85px;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 10px;
 }
 #fahrenheit-link {
   text-decoration: none;

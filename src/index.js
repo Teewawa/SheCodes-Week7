@@ -16,13 +16,13 @@ function getWeatherDescription(response) {
 function getTemperature(response) {
   let temperatureElem = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
-  temperatureElem.innerHTML = `${temperature}°C`;
+  temperatureElem.innerHTML = `${temperature}`;
 }
 
 function getFeelsLike(response) {
   let feelsLikeElem = document.querySelector("#feelsLike");
   let feelsLike = Math.round(response.data.main.feels_like);
-  feelsLikeElem.innerHTML = `Feels like: ${feelsLike}°C`;
+  feelsLikeElem.innerHTML = `Feels like: ${feelsLike}`;
 }
 
 function getHumidity(response) {
@@ -136,8 +136,9 @@ function getTodaysDate(now) {
 //Time format: 12-hour period AM/PM
 function getTimeNow() {
   let now = new Date();
-  let hour = now.getHours();
+  let hour = String(now.getHours()).padStart(0, "0");
   let minutes = String(now.getMinutes()).padStart(2, "0");
+  let seconds = String(now.getSeconds()).padStart(2, "0");
   let meridiem = "";
 
   if (hour < 12) {
@@ -151,13 +152,13 @@ function getTimeNow() {
     hour = hour - 12;
     meridiem = "PM";
   }
-  let time = `${hour}:${minutes}${meridiem}`;
-  timeNow.innerHTML = time;
+  let time = `${hour}:${minutes}:${seconds} ${meridiem}`;
+  timeNow.innerHTML = `${time}`;
+
+  //Performs function for a 'live clock'
   let t = setTimeout(function () {
     getTimeNow();
   }, 1000);
-
-  //return ``;
 }
 
 //Greeting format: Morning 12AM-11AM, Afternoon 12PM-5PM, Evening 6PM-11PM
