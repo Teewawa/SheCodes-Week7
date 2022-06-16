@@ -92,17 +92,17 @@ button {
   color: rgb(0, 188, 242);
 }
 .feelsLikeIcon {
-  max-width: 20px;
+  max-width: 35px;
   padding: 0px;
   margin: 0px;
 }
 .humidityIcon {
-  max-width: 20px;
+  max-width: 35px;
   padding: 0px;
   margin: 0px;
 }
 .windSpeedIcon {
-  max-width: 25px;
+  max-width: 35px;
   padding: 0px;
   margin: 0px;
 }

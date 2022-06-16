@@ -12,46 +12,141 @@ function getDayOrNight() {
   }
 }
 /*------------Updating the weather Icons------------------------------------*/
-function updateWeatherIcon(response) {
-  let weatherIconMainElem = document.querySelector("#weatherIconMain");
-  let description = response.data.weather[0].main;
-
-  //Drizzle
-  //Rain
-  //Thunderstorm
-  //Snow
-  //Special Atmosphere
-}
-
-function getCloudIcon(response) {
+function getAtmosphereIcon(response) {
   let description = response.data.weather[0].description;
-  let weatherIconElem = document.querySelector("#weatherIconMain");
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
 
   //compare description to set specific weather icons
-  if (description === "few clouds") {
-    weatherIconMainElem.setAttribute("src");
+  if (description === "tornado") {
+    weatherIconMainElem.setAttribute("src", `./media/tornado.png`);
+  } else if (description === "Smoke" || "volcanic ash" || "squalls") {
+    weatherIconMainElem.setAttribute("src", `./media/smokeAshSqualls.png`);
+  } else if (description === "mist" || "Haze" || "fog") {
+    weatherIconMainElem.setAttribute("src", `./media/fogHazeMist.png`);
+  } else if (description === "sand" || "dust" || "sand/ dust whirls") {
+    weatherIconMainElem.setAttribute("src", `./media/dustSand.png`);
   }
 }
 
-function getClearSkyIcon() {
-  let weatherIconElem = document.querySelector("#weatherIconMain");
+function getThunderstormIcon(response) {
+  let description = response.data.weather[0].description;
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
+
+  //compare description to set specific weather icons
+  if (
+    description === "thunderstorm with light rain" ||
+    "thunderstorm with rain" ||
+    "thunderstorm with heavy rain" ||
+    "thunderstorm with light drizzle" ||
+    "thunderstorm with drizzle" ||
+    "thunderstorm with heavy drizzle"
+  ) {
+    weatherIconMainElem.setAttribute("src", `./media/thunderRain.png`);
+  } else if (
+    description === "light thunderstorm" ||
+    "thunderstorm" ||
+    "ragged thunderstorm"
+  ) {
+    weatherIconMainElem.setAttribute("src", `./media/thunderstorm.png`);
+  }
+}
+
+function getDrizzleIcon(response) {
+  let description = response.data.weather[0].description;
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  weatherIconMainElem.setAttribute("src", `./media/drizzle.png`);
+}
+
+function getRainIcon(response) {
+  let description = response.data.weather[0].description;
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
+
+  //compare description to set specific weather icons
+  if (description === "light rain" || "moderate rain") {
+    weatherIconMainElem.setAttribute("src", `./media/rain.png`);
+  } else if (description === "freezing rain") {
+    weatherIconMainElem.setAttribute("src", `./media/snowRain.png`);
+  } else if (
+    description === "heavy intensity rain" ||
+    "very heavy rain" ||
+    "extreme rain" ||
+    "light intensity shower rain" ||
+    "shower rain" ||
+    "heavy intensity shower rain" ||
+    "ragged shower rain"
+  ) {
+    weatherIconMainElem.setAttribute("src", `./media/rainShower.png`);
+  }
+}
+
+function getSnowIcon(response) {
+  let description = response.date.weather[0].description;
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
+
+  //compare description to set specific weather icons
+  if (description === "light snow" || "Snow" || "Heavy snow") {
+    weatherIconMainElem.setAttribute("src", `./media/snow.png`);
+  } else if (
+    description === "Sleet" ||
+    "Light shower sleet" ||
+    "Shower sleet"
+  ) {
+    weatherIconMainElem.setAttribute("src", `./media/sleet.png`);
+  } else if (
+    description === "Light rain and snow" ||
+    "Rain and snow" ||
+    "Light shower snow" ||
+    "Shower snow" ||
+    "Heavy shower snow"
+  ) {
+    weatherIconMainElem.setAttribute("src", `./media/snowRain.png`);
+  }
+}
+
+function getCloudsIcon(response) {
+  let description = response.data.weather[0].description;
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
+
+  //compare description to set specific weather icons
+  if (description === "few clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/fewClouds.png`);
+  } else if (description === "scattered clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/scatteredClouds.png`);
+  } else if (description === "broken clouds" || "overcast clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/clouds.png`);
+  }
+}
+
+function getClearSkyIcon(response) {
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
   weatherIconMainElem.setAttribute("src", `./media/clearSky.png`);
-  console.log("this is clear Sky icon");
 }
 
 function getMainWeather(response) {
   let main = response.data.weather[0].main;
+  console.log(`get main weather ${main}`);
   return main;
 }
 
 function updateMainWeatherIcon(response) {
   let main = getMainWeather(response);
+  console.log(`update main: main is ${main}`);
 
   //compare main weather description then call specific function
-  if (main === "clear") {
-    getClearSkyIcon();
-  } else if (main === "clouds") {
+  if (main === "Clear") {
+    getClearSkyIcon(response);
+  } else if (main === "Clouds") {
     getCloudsIcon(response);
+  } else if (main === "Snow") {
+    getSnowIcon(response);
+  } else if (main === "Rain") {
+    getRainIcon(response);
+  } else if (main === "Drizzle") {
+    getDrizzleIcon(response);
+  } else if (main === "Thunderstorm") {
+    getThunderstormIcon(response);
+  } else {
+    getAtmosphereIcon(response);
   }
 }
 
