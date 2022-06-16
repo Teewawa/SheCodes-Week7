@@ -84,16 +84,15 @@ button {
 #fahrenheit-link {
   text-decoration: none;
 }
+
 #fahrenheit-link:hover {
   text-decoration: none;
-  color: rgb(0, 188, 242);
 }
 #celsius-link {
   text-decoration: none;
 }
 #celsius-link:hover {
   text-decoration: none;
-  color: rgb(0, 188, 242);
 }
 .feelsLikeIcon {
   max-width: 35px;

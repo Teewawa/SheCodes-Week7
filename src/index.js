@@ -346,6 +346,8 @@ function displayFahrenheit(event) {
   fahrenheitElem.innerHTML = fahrenheitTemp;
   celsiusBttn.classList.remove("active");
   fahrenheitBttn.classList.add("active");
+  celsiusBttn.style.color = "rgb(253, 219, 58)";
+  fahrenheitBttn.style.color = "black";
 }
 
 function displayCelsius(event) {
@@ -354,6 +356,8 @@ function displayCelsius(event) {
   celsius.innerHTML = Math.round(celsiusTemperature);
   celsiusBttn.classList.add("active");
   fahrenheitBttn.classList.remove("active");
+  fahrenheitBttn.style.color = "rgb(253, 219, 58)";
+  celsiusBttn.style.color = "black";
 }
 
 //Current date
