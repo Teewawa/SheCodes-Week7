@@ -30,6 +30,7 @@ h3 #time-now {
 }
 button {
   width: 150px;
+  text-align: left;
 }
 .card.bg-card-left {
   background-color: rgba(216, 178, 190, 0.4);

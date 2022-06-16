@@ -1,10 +1,67 @@
-//------------------------------WK5: Search Engine for city------------------------
+function getTimeOfTimeZone(offset) {
+  var d = new Date();
+  var gmtHours = -d.getTimezoneOffset() / 60;
+  console.log("The local time zone is: GMT " + gmtHours);
+  //output:The local time zone is: GMT 11
+}
+
+function getDayOrNight() {
+  let now = new Date();
+  let hour = getHours();
+  let day = "day";
+
+  if (hour > 6 && hour < 18) {
+    day = "day";
+  } else if (hour < 7) {
+    day = "night";
+  } else if (hour > 17) {
+    day = "night";
+  }
+}
+function updateWeatherIcon(response) {
+  let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  let description = response.data.weather[0].description;
+  console.log(`this is the update weather icon`);
+  // let day = getDayOrNight();
+
+  if (description === "clear sky") {
+    weatherIconMainElem.setAttribute("src", `./media/clearSky.png`);
+    console.log("this is clear Sky icon");
+  } else if (description === "few clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/fewClouds.png`);
+  } else if (description === "scattered clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/fewClouds/png`);
+    console.log("this is scattered clouds icon");
+  } else if (description === "broken clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/fewClouds/png`);
+  } else if (description === "overcast clouds") {
+    weatherIconMainElem.setAttribute("src", `./media/overcastClouds/png`);
+  } else if (description === "shower rain") {
+    weatherIconMainElem.setAttribute("src", `./media/showerRain.png`);
+  } else if (description === "rain") {
+    weatherIconMainElem.setAttribute("src", `./media/rain.png`);
+  } else if (description === "thunderstorm") {
+    weatherIconMainElem.setAttribute("src", `./media/thunderstorm.png`);
+  } else if (description === "snow") {
+    weatherIconMainElem.setAttribute("src", `./media/snow.png`);
+  } else if (description === "mist") {
+    weatherIconMainElem.setAttribute("src", `./media/mist.png`);
+  }
+
+  //clear sky, few clouds, scattered clouds, broken clouds,
+  //shower rain, rain, thunderstorm, snow, mist
+}
+
 function getLocation(response) {
   let locationElement = document.querySelector("#location");
   let city = response.data.name;
   let country = response.data.sys.country;
   let location = `${city}, ${country}`;
+  let timeZone = response.data.timezone;
   locationElement.innerHTML = `${location}`;
+  console.log(response.data);
+
+  console.log(getTimeOfTimeZone(timeZone));
 }
 
 function getWeatherDescription(response) {
@@ -45,6 +102,7 @@ function getWeather(response) {
   getFeelsLike(response);
   getHumidity(response);
   getWindSpeed(response);
+  updateWeatherIcon(response);
 }
 
 function searchLocation(event) {
@@ -77,7 +135,6 @@ function searchLocation(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
 
-//------------------Wk5 Bonus Feature - Current Location Button--------------------
 function getPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -95,9 +152,6 @@ function clickedCurrent() {
 let currentLocationBttn = document.querySelector("#currentLocationBttn");
 currentLocationBttn.addEventListener("click", clickedCurrent);
 
-/*------------------------------------------------------------------------------
-----------------------------------WK4 homework----------------------------------
----------------------------------------------------------------------------------*/
 //Date format: Day, Month DD, YYYY
 function getTodaysDate(now) {
   let days = [
@@ -166,13 +220,13 @@ function getGreeting(now) {
   let hour = now.getHours();
   let greeting = "";
   if (hour < 12) {
-    greeting = "🌞Good Morning";
+    greeting = "Good Morning";
   } else if (hour >= 12 && hour < 18) {
-    greeting = "😎Good Afternoon";
+    greeting = "Good Afternoon";
   } else if (hour > 17 && hour < 24) {
-    greeting = "🌜Good Evening";
+    greeting = "Good Evening";
   } else {
-    greeting = "🌞Good Morning";
+    greeting = "Good Morning";
   }
   return `${greeting}`;
 }
