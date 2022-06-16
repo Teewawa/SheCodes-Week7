@@ -9,7 +9,7 @@ body {
 .weatherApp {
   margin: 0 auto;
   max-width: 900px;
-  margin-top: 30px;
+  margin-top: 35px;
 }
 .card {
   text-align: center;
@@ -33,20 +33,21 @@ button {
   text-align: left;
 }
 .card.bg-card-left {
-  background-color: rgba(216, 178, 190, 0.4);
+  background-color: rgba(247, 244, 245, 0.5);
 }
 .just-right {
   text-align: center;
 }
+
 .just-left {
   text-align: center;
 }
 .card.bg-card-right {
-  background-color: rgba(216, 178, 190, 0.4);
+  background-color: rgba(247, 244, 245, 0.5);
 }
 
 .card.bg-card-details {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(247, 244, 245, 0.4);
 }
 
 .location {
@@ -115,12 +116,12 @@ button {
   margin: 0px;
 }
 .greeting {
-  font-size: 30px;
+  font-size: 35px;
   padding: 0px;
   margin: 0px;
 }
 .greetingIcon {
-  max-width: 40px;
+  max-width: 45px;
   padding: 0px;
   margin: 0px;
   position: relative;
@@ -134,4 +135,10 @@ button {
 table {
   padding: 1px;
   margin: 1px;
+}
+.credit-line {
+  color: white;
+}
+.src-link {
+  color: white;
 }

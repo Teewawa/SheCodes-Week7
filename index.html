@@ -28,44 +28,41 @@
                   <input
                     type="text"
                     id="search-input"
-                    placeholder="Press 'Enter' to search city"
+                    placeholder="Search for a city..."
                     autocomplete="off"
                     autofocus="on"
                     class="rounded"
                   />
                 </form>
               </div>
-              <h1 class="location" id="location">Guam, GU</h1>           
+              <h1 class="location" id="location"></h1>           
             <div class="weatherForecast">
-                  <span class="temp" id="temperature">26</span><small class="units"><a href="#" class="active" id="celsius-link">°C</a>  | 
+                  <span class="temp" id="temperature"></span><small class="units"><a href="#" class="active" id="celsius-link">°C</a>  | 
                         <a href="#" id="fahrenheit-link">°F</a>
                     </small>
    
                 <br>
-                <div class = "weatherStatus">Partly Cloudy</div>
-                <img src="./media/clearSky.png" class="weatherIcon-main" id="weatherIconMain" alt="weather Icon">
+                <div class = "weatherStatus"></div>
+                <img src="./media/dustSand.png" class="weatherIcon-main" id="weatherIconMain" alt="weather Icon">
             </div>
 
               <div class="row p-0 mt-2">
                 <div class="col p-1 just-left">
                   <img src="./media/feelsLikeTemp.png" class="feelsLikeIcon" alt="thermostat">
-                  Feels like: <span id="feelsLike">17</span> 
+                  Feels like: <span id="feelsLike"></span> 
+                </div>
+              </div>   
+              <div class="row p-0">
+                <div class="col p-1 just-left">
+                  <img src="./media/humidity.png" class="humidityIcon" alt="humidity icon">
+                  Humidity: <span id="humidity"></span>
                 </div>
               </div>
               <div class="row p-0">
                 <div class="col p-1 just-left">
                   <img src="./media/windSpeed.png" class="windSpeedIcon" alt="wind speed icon"> 
-                  Wind: <span id="windSpeed">6km/h</span>
+                  Wind: <span id="windSpeed"></span>
                 </div>
-              </div>
-              <div class="row p-0">
-                <div class="col p-1 just-left">
-                  <img src="./media/humidity.png" class="humidityIcon" alt="humidity icon">
-                  Humidity: <span id="humidity">67%</span>
-                </div>
-              </div>
-              <div class="row p-2">
-
               </div>
             </div>
           </div>
@@ -76,15 +73,13 @@
               <div class="row p-0 m-1">
                 <div class="col-sm-9 p-0">
                   <div class="greetingWrapper">
-                    <span class="greeting" id="greeting"></span> 
-                    <img src="./media/afternoon.png" class="greetingIcon" id="greetingIcon" alt="Greeting Icon">
-                  <br>
                   <span class="dateToday m-1 p-0" id="date-today">
-                  </span> - <span id="time-now"></span>
-                  </div>
-
-                                   
-                  
+                  </span> - <span id="time-now"></span> 
+                  <br>
+                  <span class="greeting" id="greeting"></span> 
+                  <img src="./media/afternoon.png" class="greetingIcon" id="greetingIcon" alt="Greeting Icon">
+                                 
+                  </div>   
                 </div>
                 <div class="col-sm-3 p-0">
                   <br>
@@ -215,8 +210,13 @@
             </div>    
           </div>   
           <footer>
-            <a href="https://github.com/Teewawa/SheCodes-Week6">Open-source code</a> 
-            by Tiara Mendiola
+                       
+            <span class="credit-line"> 
+            Open-source code on
+            <a href="https://github.com/Teewawa/SheCodes-Week6" class="src-link">GitHub</a>
+            by Tiara Mendiola and hosted on
+            <a href="https://app.netlify.com/" class="src-link">Netlfiy</a>
+            </span>
           </footer>
         </div>      
       </div>   

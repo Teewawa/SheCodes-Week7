@@ -17,6 +17,11 @@ function getDayOrNight() {
 function getAtmosphereIcon(response) {
   let description = response.data.weather[0].description;
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  document.body.style.background = "url(media/foggyBg.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 
   //compare description to set specific weather icons
   if (description === "tornado") {
@@ -33,6 +38,11 @@ function getAtmosphereIcon(response) {
 function getThunderstormIcon(response) {
   let description = response.data.weather[0].description;
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  document.body.style.background = "url(media/thunderstormBg.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 
   //compare description to set specific weather icons
   if (
@@ -57,11 +67,21 @@ function getDrizzleIcon(response) {
   let description = response.data.weather[0].description;
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
   weatherIconMainElem.setAttribute("src", `./media/drizzle.png`);
+  document.body.style.background = "url(media/rainBg.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 }
 
 function getRainIcon(response) {
   let description = response.data.weather[0].description;
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  document.body.style.background = "url(media/rainBg.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 
   //compare description to set specific weather icons
   if (description === "light rain" || "moderate rain") {
@@ -84,6 +104,11 @@ function getRainIcon(response) {
 function getSnowIcon(response) {
   let description = response.date.weather[0].description;
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  document.body.style.background = "url(media/snowBG.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 
   //compare description to set specific weather icons
   if (description === "light snow" || "Snow" || "Heavy snow") {
@@ -108,6 +133,11 @@ function getSnowIcon(response) {
 function getCloudsIcon(response) {
   let description = response.data.weather[0].description;
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
+  document.body.style.background = "url(media/cloudsBg.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 
   //compare description to set specific weather icons
   if (description === "few clouds") {
@@ -122,6 +152,11 @@ function getCloudsIcon(response) {
 function getClearSkyIcon(response) {
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
   weatherIconMainElem.setAttribute("src", `./media/clearSky.png`);
+  document.body.style.background = "url(media/clearSky.jpg)";
+  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 }
 
 function getMainWeather(response) {
@@ -179,7 +214,8 @@ function getTemperature(response) {
 function getFeelsLike(response) {
   let feelsLikeElem = document.querySelector("#feelsLike");
   let feelsLike = Math.round(response.data.main.feels_like);
-  feelsLikeElem.innerHTML = `${feelsLike}`;
+  feelsLikeElem.innerHTML = `${feelsLike} °C`;
+  feelsLikeC = feelsLike;
 }
 
 function getHumidity(response) {
@@ -190,9 +226,9 @@ function getHumidity(response) {
 
 function getWindSpeed(response) {
   let windSpeedElem = document.querySelector("#windSpeed");
-  let mps = response.data.wind.speed;
-  let windSpeed = Math.round(mps * (1000 / 3600)); //cover to km/h
-  windSpeedElem.innerHTML = `${windSpeed} km/h`;
+  let wind = Math.round(response.data.wind.speed * 3.6);
+  windSpeedElem.innerHTML = `${wind} km/h`;
+  windKmH = wind;
 }
 
 function getWeather(response) {
@@ -213,10 +249,10 @@ function searchLocation(event) {
   //Condition for blank entries
   let input = searchInput.value.trim();
   if (input) {
-    location.innerHTML = `Searching location...`;
+    location.innerHTML = `Searching city...`;
   } else {
     location.innerHTML = null;
-    alert("Please enter a location.");
+    alert("Please enter a city.");
   }
 
   let city = searchInput.value;
@@ -344,20 +380,40 @@ function displayFahrenheit(event) {
   let fahrenheitElem = document.querySelector("#temperature");
   fahrenheitTemp = Math.round((celsiusTemperature * 9) / 5 + 32);
   fahrenheitElem.innerHTML = fahrenheitTemp;
+
   celsiusBttn.classList.remove("active");
   fahrenheitBttn.classList.add("active");
-  celsiusBttn.style.color = "rgb(253, 219, 58)";
+  celsiusBttn.style.color = "rgb(154, 81, 177)";
   fahrenheitBttn.style.color = "black";
+  fahrenheitBttn.style.fontWeight = "bold";
+  celsiusBttn.style.fontWeight = "400";
+
+  let feelsLikeFElem = document.querySelector("#feelsLike");
+  let feelsLikeF = Math.round((feelsLikeC * 9) / 5 + 32);
+  feelsLikeFElem.innerHTML = `${feelsLikeF} °F`;
+
+  let windSpeed = document.querySelector("#windSpeed");
+  let windMph = Math.round(windKmH / 1.609344);
+  windSpeed.innerHTML = `${windMph} mph`;
 }
 
 function displayCelsius(event) {
   event.preventDefault();
   let celsius = document.querySelector("#temperature");
   celsius.innerHTML = Math.round(celsiusTemperature);
+
   celsiusBttn.classList.add("active");
   fahrenheitBttn.classList.remove("active");
-  fahrenheitBttn.style.color = "rgb(253, 219, 58)";
+  fahrenheitBttn.style.color = "rgb(154, 81, 177)";
   celsiusBttn.style.color = "black";
+  celsiusBttn.style.fontWeight = "bold";
+  fahrenheitBttn.style.fontWeight = "400";
+
+  let feelsLikeCElem = document.querySelector("#feelsLike");
+  feelsLikeCElem.innerHTML = `${feelsLikeC} °C`;
+
+  let windSpeed = document.querySelector("#windSpeed");
+  windSpeed.innerHTML = `${windKmH} km/h`;
 }
 
 //Current date
@@ -379,6 +435,8 @@ currentLocationBttn.addEventListener("click", clickedCurrent);
 
 //Fahrenheit Button
 let celsiusTemperature = null;
+let windKmH = null;
+let feelsLikeC = null;
 let fahrenheitBttn = document.querySelector("#fahrenheit-link");
 fahrenheitBttn.addEventListener("click", displayFahrenheit);
 
