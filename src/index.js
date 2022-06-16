@@ -287,7 +287,7 @@ function getTodaysDate(now) {
 //Time format: 12-hour period AM/PM
 function getTimeNow() {
   let now = new Date();
-  let hour = String(now.getHours()).padStart(0, "0");
+  let hour = String(now.getHours()).padStart(2, "0");
   let minutes = String(now.getMinutes()).padStart(2, "0");
   let seconds = String(now.getSeconds()).padStart(2, "0");
   let meridiem = "";
@@ -303,6 +303,10 @@ function getTimeNow() {
     hour = hour - 12;
     meridiem = "PM";
   }
+
+  if (hour === 0) {
+    hour = 12;
+  }
   let time = `${hour}:${minutes}:${seconds} ${meridiem}`;
   timeNow.innerHTML = `${time}`;
 
@@ -316,14 +320,19 @@ function getTimeNow() {
 function getGreeting(now) {
   let hour = now.getHours();
   let greeting = "";
+  let image = document.querySelector("#greetingIcon");
+
   if (hour < 12) {
     greeting = "Good Morning";
   } else if (hour >= 12 && hour < 18) {
     greeting = "Good Afternoon";
+    image.setAttribute("src", `./media/afternoon.png`);
   } else if (hour > 17 && hour < 24) {
     greeting = "Good Evening";
+    image.setAttribute("src", `./media/evening.png`);
   } else {
     greeting = "Good Morning";
+    image.setAttribute("src", `./media/afternoon.pgn`);
   }
   return `${greeting}`;
 }

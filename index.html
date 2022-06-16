@@ -75,15 +75,20 @@
               <!--Card 2: Row 1 has 2 Columns-->
               <div class="row p-0 m-1">
                 <div class="col-sm-9 p-0">
-                  <h2 class="greeting" id="greeting"></h2> 
-                 
-                  <div class="dateToday m-1 p-0" id="date-today"></div>
-                
+                  <div class="greetingWrapper">
+                    <span class="greeting" id="greeting"></span> 
+                    <img src="./media/afternoon.png" class="greetingIcon" id="greetingIcon" alt="Greeting Icon">
+                  <br>
+                  <span class="dateToday m-1 p-0" id="date-today">
+                  </span> - <span id="time-now"></span>
+                  </div>
+
+                                   
                   
                 </div>
                 <div class="col-sm-3 p-0">
                   <br>
-                  <h5 id="time-now"></h5>
+                  
                    <button type="button" class="btn btn-warning p-1 m-0" id="currentLocationBttn">Check my location</button>
                   
                   

@@ -106,8 +106,22 @@ button {
   padding: 0px;
   margin: 0px;
 }
+.greetingWrapper {
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+}
 .greeting {
-  font-size: 40px;
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+.greetingIcon {
+  max-width: 40px;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  top: -10px;
 }
 .weatherIcon {
   font-size: 35px;
