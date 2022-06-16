@@ -1,10 +1,3 @@
-function getTimeOfTimeZone(offset) {
-  var d = new Date();
-  var gmtHours = -d.getTimezoneOffset() / 60;
-  console.log("The local time zone is: GMT " + gmtHours);
-  //output:The local time zone is: GMT 11
-}
-
 function getDayOrNight() {
   let now = new Date();
   let hour = getHours();
@@ -18,40 +11,51 @@ function getDayOrNight() {
     day = "night";
   }
 }
+/*------------Updating the weather Icons------------------------------------*/
 function updateWeatherIcon(response) {
   let weatherIconMainElem = document.querySelector("#weatherIconMain");
-  let description = response.data.weather[0].description;
-  console.log(`this is the update weather icon`);
-  // let day = getDayOrNight();
+  let description = response.data.weather[0].main;
 
-  if (description === "clear sky") {
-    weatherIconMainElem.setAttribute("src", `./media/clearSky.png`);
-    console.log("this is clear Sky icon");
-  } else if (description === "few clouds") {
-    weatherIconMainElem.setAttribute("src", `./media/fewClouds.png`);
-  } else if (description === "scattered clouds") {
-    weatherIconMainElem.setAttribute("src", `./media/fewClouds/png`);
-    console.log("this is scattered clouds icon");
-  } else if (description === "broken clouds") {
-    weatherIconMainElem.setAttribute("src", `./media/fewClouds/png`);
-  } else if (description === "overcast clouds") {
-    weatherIconMainElem.setAttribute("src", `./media/overcastClouds/png`);
-  } else if (description === "shower rain") {
-    weatherIconMainElem.setAttribute("src", `./media/showerRain.png`);
-  } else if (description === "rain") {
-    weatherIconMainElem.setAttribute("src", `./media/rain.png`);
-  } else if (description === "thunderstorm") {
-    weatherIconMainElem.setAttribute("src", `./media/thunderstorm.png`);
-  } else if (description === "snow") {
-    weatherIconMainElem.setAttribute("src", `./media/snow.png`);
-  } else if (description === "mist") {
-    weatherIconMainElem.setAttribute("src", `./media/mist.png`);
-  }
-
-  //clear sky, few clouds, scattered clouds, broken clouds,
-  //shower rain, rain, thunderstorm, snow, mist
+  //Drizzle
+  //Rain
+  //Thunderstorm
+  //Snow
+  //Special Atmosphere
 }
 
+function getCloudIcon(response) {
+  let description = response.data.weather[0].description;
+  let weatherIconElem = document.querySelector("#weatherIconMain");
+
+  //compare description to set specific weather icons
+  if (description === "few clouds") {
+    weatherIconMainElem.setAttribute("src");
+  }
+}
+
+function getClearSkyIcon() {
+  let weatherIconElem = document.querySelector("#weatherIconMain");
+  weatherIconMainElem.setAttribute("src", `./media/clearSky.png`);
+  console.log("this is clear Sky icon");
+}
+
+function getMainWeather(response) {
+  let main = response.data.weather[0].main;
+  return main;
+}
+
+function updateMainWeatherIcon(response) {
+  let main = getMainWeather(response);
+
+  //compare main weather description then call specific function
+  if (main === "clear") {
+    getClearSkyIcon();
+  } else if (main === "clouds") {
+    getCloudsIcon(response);
+  }
+}
+
+/*-----------------------------------------*/
 function getLocation(response) {
   let locationElement = document.querySelector("#location");
   let city = response.data.name;
@@ -60,8 +64,6 @@ function getLocation(response) {
   let timeZone = response.data.timezone;
   locationElement.innerHTML = `${location}`;
   console.log(response.data);
-
-  console.log(getTimeOfTimeZone(timeZone));
 }
 
 function getWeatherDescription(response) {
@@ -102,7 +104,7 @@ function getWeather(response) {
   getFeelsLike(response);
   getHumidity(response);
   getWindSpeed(response);
-  updateWeatherIcon(response);
+  updateMainWeatherIcon(response);
 }
 
 function searchLocation(event) {
