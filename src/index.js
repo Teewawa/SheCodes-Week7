@@ -1,4 +1,5 @@
 function getDayOrNight() {
+  //try using the dt in response.data
   let now = new Date();
   let hour = getHours();
   let day = "day";
@@ -11,6 +12,7 @@ function getDayOrNight() {
     day = "night";
   }
 }
+
 /*------------Updating the weather Icons------------------------------------*/
 function getAtmosphereIcon(response) {
   let description = response.data.weather[0].description;
@@ -150,7 +152,7 @@ function updateMainWeatherIcon(response) {
   }
 }
 
-/*-----------------------------------------*/
+/*-----------------------------------------------------------*/
 function getLocation(response) {
   let locationElement = document.querySelector("#location");
   let city = response.data.name;
@@ -171,6 +173,7 @@ function getTemperature(response) {
   let temperatureElem = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
   temperatureElem.innerHTML = `${temperature}`;
+  celsiusTemperature = response.data.main.temp;
 }
 
 function getFeelsLike(response) {
@@ -229,9 +232,6 @@ function searchLocation(event) {
   document.getElementById("search-form").reset();
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchLocation);
-
 function getPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -245,9 +245,6 @@ function getPosition(position) {
 function clickedCurrent() {
   navigator.geolocation.getCurrentPosition(getPosition);
 }
-
-let currentLocationBttn = document.querySelector("#currentLocationBttn");
-currentLocationBttn.addEventListener("click", clickedCurrent);
 
 //Date format: Day, Month DD, YYYY
 function getTodaysDate(now) {
@@ -337,31 +334,54 @@ function getGreeting(now) {
   return `${greeting}`;
 }
 
-let now = new Date();
-let dateToday = document.querySelector("#date-today");
-let timeNow = document.querySelector("#time-now");
-let greeting = document.querySelector("#greeting");
-
-dateToday.innerHTML = getTodaysDate(now);
-greeting.innerHTML = getGreeting(now);
-getTimeNow();
-
 /*Fahrenheit/Celsisu function
 (17) in Celsius and add link to covert it to Fahrenheit. When clicking 
 on it, it should covert the temperature to Fahrenheit. When clicking on 
-Celsius, it should convert it back to Celsius
-function getFahrenheit(event) {
+Celsius, it should convert it back to Celsius*/
+
+function displayFahrenheit(event) {
   event.preventDefault();
-  let fahrenheit = document.querySelector("#temperature");
-  fahrenheit.innerHTML = "63";
+  let fahrenheitElem = document.querySelector("#temperature");
+  fahrenheitTemp = Math.round((celsiusTemperature * 9) / 5 + 32);
+  fahrenheitElem.innerHTML = fahrenheitTemp;
+  celsiusBttn.classList.remove("active");
+  fahrenheitBttn.classList.add("active");
 }
-function getCelsius(event) {
+
+function displayCelsius(event) {
   event.preventDefault();
   let celsius = document.querySelector("#temperature");
-  celsius.innerHTML = "17";
+  celsius.innerHTML = Math.round(celsiusTemperature);
+  celsiusBttn.classList.add("active");
+  fahrenheitBttn.classList.remove("active");
 }
+
+//Current date
+let now = new Date();
+let dateToday = document.querySelector("#date-today");
+dateToday.innerHTML = getTodaysDate(now);
+
+//Current time
+let timeNow = document.querySelector("#time-now");
+getTimeNow();
+
+//Greeting based off local time
+let greeting = document.querySelector("#greeting");
+greeting.innerHTML = getGreeting(now);
+
+//Current location button
+let currentLocationBttn = document.querySelector("#currentLocationBttn");
+currentLocationBttn.addEventListener("click", clickedCurrent);
+
+//Fahrenheit Button
+let celsiusTemperature = null;
 let fahrenheitBttn = document.querySelector("#fahrenheit-link");
+fahrenheitBttn.addEventListener("click", displayFahrenheit);
+
+//Celsius Button
 let celsiusBttn = document.querySelector("#celsius-link");
-//fahrenheitBttn.addEventListener("click", getFahrenheit);
-//celsiusBttn.addEventListener("click", getCelsius);
-*/
+celsiusBttn.addEventListener("click", displayCelsius);
+
+//Search Engine
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", searchLocation);

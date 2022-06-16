@@ -59,11 +59,15 @@ button {
   position: relative;
   right: -20px;
 }
+.active {
+  color: black;
+}
 .units {
   position: relative;
   padding: 0px;
   margin: 0px;
   right: -22px;
+  top: -30px;
 }
 .weatherStatus {
   font-size: 16px;
@@ -79,16 +83,16 @@ button {
 }
 #fahrenheit-link {
   text-decoration: none;
-  color: black;
 }
 #fahrenheit-link:hover {
+  text-decoration: none;
   color: rgb(0, 188, 242);
 }
 #celsius-link {
   text-decoration: none;
-  color: black;
 }
 #celsius-link:hover {
+  text-decoration: none;
   color: rgb(0, 188, 242);
 }
 .feelsLikeIcon {
