@@ -44,21 +44,28 @@
                 <br>
                 <div class = "weatherStatus">Partly Cloudy</div>
                 <img src="./media/sun.png" class="weatherIcon-main" alt="weather Icon">
-                
             </div>
-              <br>
-              <div class="row p-0">
-                <div class="col p-1 just-right" id="feelsLike">Feels like 17</div>
-              </div>
-              <div class="row p-0">
-                <div class="col p-1 just-right" id="humidity">Humidity 💧 67%</div>
-              </div>
-              <div class="row p-0">
-                <div class="col p-1 just-right" id="windSpeed">Wind 💨 6km/h</div>
-              </div>
 
+              <div class="row p-0 mt-2">
+                <div class="col p-1 just-left">
+                  <img src="./media/feelsLike.png" class="feelsLikeIcon" alt="thermostat">
+                  Feels like: <span id="feelsLike">17</span> 
+                </div>
+              </div>
+              <div class="row p-0">
+                <div class="col p-1 just-left">
+                  <img src="./media/wind-speed.png" class="windSpeedIcon" alt="wind speed icon"> 
+                  Wind: <span id="windSpeed">6km/h</span>
+                </div>
+              </div>
+              <div class="row p-0">
+                <div class="col p-1 just-left">
+                  <img src="./media/humidity.png" class="humidityIcon" alt="humidity icon">
+                  Humidity: <span id="humidity">67%</span>
+                </div>
+              </div>
               <div class="row p-2">
-                <button type="button" class="btn btn-warning" id="currentLocationBttn">Current Location</button>
+
               </div>
             </div>
           </div>
@@ -77,6 +84,7 @@
                 <div class="col-sm-3 p-0">
                   <br>
                   <h5 id="time-now"></h5>
+                   <button type="button" class="btn btn-warning p-1 m-0" id="currentLocationBttn">Check my location</button>
                   
                   
                 </div>

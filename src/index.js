@@ -22,20 +22,20 @@ function getTemperature(response) {
 function getFeelsLike(response) {
   let feelsLikeElem = document.querySelector("#feelsLike");
   let feelsLike = Math.round(response.data.main.feels_like);
-  feelsLikeElem.innerHTML = `Feels like: ${feelsLike}`;
+  feelsLikeElem.innerHTML = `${feelsLike}`;
 }
 
 function getHumidity(response) {
   let humidityElem = document.querySelector("#humidity");
   let humidity = Math.round(response.data.main.humidity);
-  humidityElem.innerHTML = `Humidity 💧 ${humidity}%`;
+  humidityElem.innerHTML = `${humidity}%`;
 }
 
 function getWindSpeed(response) {
   let windSpeedElem = document.querySelector("#windSpeed");
   let mps = response.data.wind.speed;
   let windSpeed = Math.round(mps * (1000 / 3600)); //cover to km/h
-  windSpeedElem.innerHTML = `Wind 💨${windSpeed} km/h`;
+  windSpeedElem.innerHTML = `${windSpeed} km/h`;
 }
 
 function getWeather(response) {

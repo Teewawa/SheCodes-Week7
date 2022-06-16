@@ -28,6 +28,9 @@ body {
 h3 #time-now {
   text-align: right;
 }
+button {
+  width: 150px;
+}
 .card.bg-card-left {
   background-color: rgba(216, 178, 190, 0.4);
 }
@@ -71,6 +74,7 @@ h3 #time-now {
   padding: 0px;
   margin: 0px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 #fahrenheit-link {
   text-decoration: none;
@@ -85,6 +89,21 @@ h3 #time-now {
 }
 #celsius-link:hover {
   color: rgb(0, 188, 242);
+}
+.feelsLikeIcon {
+  max-width: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+.humidityIcon {
+  max-width: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+.windSpeedIcon {
+  max-width: 25px;
+  padding: 0px;
+  margin: 0px;
 }
 .greeting {
   font-size: 40px;
